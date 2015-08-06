@@ -1,11 +1,8 @@
 (ns cljsinit.core-test
-  (:require
-   [cljs.test :refer-macros [deftest testing is]]
-   [cljsinit.core :as c]))
+  (:require [cljs.test.check.generators :as gen]
+            [cljs.test.check.cljs-test :refer-macros [defspec]]
+            [cljs.test.check.properties :refer-macros [for-all]]))
 
-
-(deftest base
-  (testing "base"
-    (is (= 1 1))
-    (is (= 1 "A"))
-    (is (= "ABCDE" (c/upper "abcde")))))
+(defspec almost-positive
+  (for-all [i gen/pos-int]
+    (>= i 0)))
