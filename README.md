@@ -20,3 +20,7 @@ being available in other namespaces that don't require it.
         $ lein do clean, cljsbuild once test
 
     The test runs ok because there's an additional ns (`test.cljsinit.other-test`) which requires `cljs.test.check`, fixing the previous test.
+
+### UPDATE
+
+[Here](https://github.com/shaunlebron/cljs-circular-dependency) there is a good explanation of why a symbol from other ns can be used even without `:require`
